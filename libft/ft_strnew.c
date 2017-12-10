@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkgosise <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 11:31:16 by mkgosise          #+#    #+#             */
-/*   Updated: 2017/12/10 07:11:49 by mkgosise         ###   ########.fr       */
+/*   Created: 2017/06/07 15:02:21 by mkgosise          #+#    #+#             */
+/*   Updated: 2017/06/30 04:57:15 by mkgosise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
+char	*ft_strnew(size_t size)
+{
+	char *ret;
 
-# define BUFF_SIZE 255
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	ret = ft_memalloc(size + 1);
+	if (ret == NULL)
+		return (NULL);
+	ft_bzero((void*)ret, (size_t)size);
+	return (ret);
+}

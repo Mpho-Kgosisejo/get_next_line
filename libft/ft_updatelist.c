@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_updatelist.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkgosise <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 11:31:16 by mkgosise          #+#    #+#             */
-/*   Updated: 2017/12/10 07:11:49 by mkgosise         ###   ########.fr       */
+/*   Created: 2017/07/22 14:31:27 by mkgosise          #+#    #+#             */
+/*   Updated: 2017/07/29 13:35:32 by mkgosise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
+int		ft_updatelist(char **arr, char *find, char *src)
+{
+	int	i;
 
-# define BUFF_SIZE 255
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if (arr == NULL || find == NULL || src == NULL)
+		return (-1);
+	i = 0;
+	while (arr[i])
+	{
+		if (ft_strcmp(arr[i], find) == 0)
+		{
+			free(arr[i]);
+			arr[i] = NULL;
+			arr[i] = ft_strdup(src);
+			return (i + 1);
+		}
+		i++;
+	}
+	return (0);
+}

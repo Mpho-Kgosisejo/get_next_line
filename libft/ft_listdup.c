@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_listdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkgosise <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 11:31:16 by mkgosise          #+#    #+#             */
-/*   Updated: 2017/12/10 07:11:49 by mkgosise         ###   ########.fr       */
+/*   Created: 2017/07/22 16:02:58 by mkgosise          #+#    #+#             */
+/*   Updated: 2017/07/28 11:22:42 by mkgosise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
+char	**ft_listdup(char **list)
+{
+	int		i;
+	char	**ret;
 
-# define BUFF_SIZE 255
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	ret = (char**)malloc(sizeof(ret) * (countlist(list) + 1));
+	if (ret == NULL)
+		return (NULL);
+	ret[countlist(list)] = 0;
+	i = 0;
+	while (list[i])
+	{
+		ret[i] = ft_strdup(list[i]);
+		i++;
+	}
+	return (ret);
+}

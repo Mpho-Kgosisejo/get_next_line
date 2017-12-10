@@ -1,0 +1,11 @@
+total 72
+-rw-r--r--    1 mkgosise  students    15 Dec  8 10:55 README.md
+-rwxr-xr-x    1 mkgosise  students  9436 Dec 10 07:40 a.out
+-rw-r--r--    1 mkgosise  students     9 Dec 10 00:53 author
+-rw-r--r--    1 mkgosise  students    17 Dec 10 07:16 file.txt
+-rw-r--r--    1 mkgosise  students     0 Dec 10 07:48 file1.txt
+-rw-r--r--    1 mkgosise  students  2221 Dec 10 07:40 get_next_line.c
+-rw-r--r--    1 mkgosise  students  1090 Dec 10 07:11 get_next_line.h
+drwxr-xr-x  157 mkgosise  students  5338 Dec 10 07:42 libft
+-rw-r--r--    1 mkgosise  students   487 Dec  9 13:33 main.c
+-rw-r--r--    1 mkgosise  students     0 Dec 10 00:52 mkgosise

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkgosise <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 11:31:16 by mkgosise          #+#    #+#             */
-/*   Updated: 2017/12/10 07:11:49 by mkgosise         ###   ########.fr       */
+/*   Created: 2017/06/06 07:39:50 by mkgosise          #+#    #+#             */
+/*   Updated: 2017/07/05 15:50:23 by mkgosise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*ret;
+	size_t	len;
 
-# define BUFF_SIZE 255
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	len = (ft_strlen(s1) + ft_strlen(s2));
+	ret = (char *)malloc(sizeof(ret) * (len + 1));
+	if (ret == NULL)
+		return (NULL);
+	ft_bzero((void*)ret, len);
+	ft_strcat(ret, s1);
+	ft_strcat(ret, s2);
+	return (ret);
+}
