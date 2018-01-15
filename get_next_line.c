@@ -20,18 +20,18 @@ char	*store_str(char *str)
 	if (!str)
 	{
 		if (!ret)
-		{
-			return (ft_strnew(0));
-			return (NULL);
-		}
+			return ((ret = ft_strnew(0)));
 		return (ret);
 	}
 	if (str)
+	{
+		//free(ret);
 		return ((ret = str));
+	}
 	return (NULL);
 }
 
-int		write_into_line(char *ln, char **line)
+int		write_into_line(char *ln, char **line, int repeat)
 {
 	int i;
 
@@ -42,11 +42,14 @@ int		write_into_line(char *ln, char **line)
 		i++;
 	store_str(ft_strdup(&ln[i + 1]));
 	ft_bzero((void*)&ln[i], ft_strlen(&ln[i]));
-	*line = ft_strdup(ln);
-	ft_strdel(&ln);
-	if (!ft_strlen(*line)){
-		return (write_into_line(store_str(NULL), line));
-	}
+	if (repeat)
+		ft_strdel(line);
+	*line = /*ft_strsub(ln, 0, i);// */ft_strdup(ln);
+	free(ln);
+	//ft_strdel(&ln);
+	/*if (!ft_strlen(*line)){
+		return (write_into_line(store_str(NULL), line, 1));
+	}*/
 	/*if (!ft_strlen(store_str(NULL)))
 		return (0);*/
 	return (1);
@@ -60,18 +63,18 @@ int		readline(const int fd, char **line)
 	char	buff[BUFF_SIZE + 1];
 
 	ln = store_str(NULL);
-	if (write_into_line(ln, line))
+	if (write_into_line(ln, line, 0))
 		return (1);
 	while ((rd = read(fd, buff, BUFF_SIZE)))
 	{
-		if (rd < 0){
+		if (rd < 0)
 			return (-1);
-		}
 		buff[rd] = 0;
 		tmp = ft_strjoin(ln, buff);
-		ft_strdel(&ln);
+		free(ln);
+		//ft_strdel(&ln);
 		ln = tmp;
-		if (write_into_line(ln, line))
+		if (write_into_line(ln, line, 0))
 			return (1);
 	}
 	return (0);

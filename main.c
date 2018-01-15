@@ -9,19 +9,21 @@ int		main(void)
 	int		fd;
 	char	*line;
 
-	if ((fd = open("file.txt", O_RDONLY)) == -1){
+	if ((fd = open("./file.txt", O_RDONLY)) == -1){
 		printf("Error opening file!\n");
 		return (0);
 	}
 
-	/*
 	while (get_next_line(fd, &line) == 1){
 		printf("output:- <(%s)>\n", line);
+		//ft_strdel(&line);
+		free(line);
 	}
-	*/
+	//ft_strdel(&line);
 
-	get_next_line(fd, &line);
-	get_next_line(fd, &line);
+	//get_next_line(fd, &line);
+	//get_next_line(fd, &line);
+	//printf(">> %s\n", line);
 
 	if (close(fd) == -1)
 		printf("Error closing file!\n");
