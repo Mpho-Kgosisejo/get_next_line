@@ -7,19 +7,24 @@
 int		main(void)
 {
 	int		fd;
+	int		line_count = 0;
 	char	*line;
 
-	if ((fd = open("./file.txt", O_RDONLY)) == -1){
+	//return (0);
+	if ((fd = open("./file0.txt", O_RDONLY)) == -1){
 		printf("Error opening file!\n");
 		return (0);
 	}
 
 	while (get_next_line(fd, &line) == 1){
-		printf("output:- <(%s)>\n", line);
-		//ft_strdel(&line);
-		free(line);
+		printf("output (%i):- <(%s)>\n", line_count, line);
+		ft_strdel(&line);
+		/*free(line);
+		line = NULL;*/
+		line_count++;
 	}
-	//ft_strdel(&line);
+	printf("output! (%i):- <(%s)>\n", line_count, line);
+	ft_strdel(&line);
 
 	//get_next_line(fd, &line);
 	//get_next_line(fd, &line);
