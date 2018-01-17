@@ -7,20 +7,20 @@
 int		main(void)
 {
 	int		fd;
+	int		pfd[2];
 	int		line_count = 0;
 	char	*line;
 
-	//return (0);
-	if ((fd = open("./file0.txt", O_RDONLY)) == -1){
+	if ((fd = open("./file0.txt", O_RDONLY)) == -1)
+	{
 		printf("Error opening file!\n");
 		return (0);
 	}
 
+
 	while (get_next_line(fd, &line) == 1){
 		printf("output (%i):- <(%s)>\n", line_count, line);
 		ft_strdel(&line);
-		/*free(line);
-		line = NULL;*/
 		line_count++;
 	}
 	printf("output! (%i):- <(%s)>\n", line_count, line);
@@ -34,3 +34,22 @@ int		main(void)
 		printf("Error closing file!\n");
 	return (0);
 }
+
+/*int 	main(void)
+{
+		char 	*line;
+		int		out;
+		int		p[2];
+		int		fd;
+
+		out = dup(1);
+		pipe(p);
+
+		fd = 1;
+		dup2(p[1], fd);
+		write(fd, "abcd1234", 8);
+		close(p[1]);
+		dup2(out, fd);
+		get_next_line(p[0], &line);
+		printf(">> %s", line);
+}*/
