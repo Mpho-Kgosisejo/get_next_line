@@ -6,7 +6,7 @@
 /*   By: mkgosise <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 11:03:46 by mkgosise          #+#    #+#             */
-/*   Updated: 2018/01/17 12:56:48 by mkgosise         ###   ########.fr       */
+/*   Updated: 2018/01/19 22:35:57 by mkgosise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int		readline(const int fd, char **line)
 		if (write_into_line(ln, line, 0))
 			return (1);
 	}
-	write_into_line(ln, line, 1);
+	if (write_into_line(ln, line, 1) && ft_strlen(ln))
+		return (1);
 	return (0);
 }
 
